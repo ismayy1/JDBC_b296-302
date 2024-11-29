@@ -18,6 +18,8 @@ public class ExecuteQuery_01 {
         Statement statement = connection.createStatement();
 
 //        step 4: Execute the query
+        System.out.println("===========TASK 1===========");
+
         ResultSet resultSet1 = statement.executeQuery("SELECT * FROM employees");
         System.out.println("resultSet1 = " + resultSet1);   // return reference
 
@@ -47,6 +49,15 @@ public class ExecuteQuery_01 {
             System.out.print(resultSet1.getInt(1) + ", ");
             System.out.print(resultSet1.getString(2) + ", ");
             System.out.println(resultSet1.getInt(3));
+        }
+
+        System.out.println("===========TASK 1===========");
+//          Get phone_code and country_name from the countries table where code is greater than 500
+        ResultSet resultSet2 = statement.executeQuery("SELECT phone_code, country_name FROM countries WHERE phone_code > 500;");
+
+        while (resultSet2.next()) {
+            System.out.print(resultSet2.getInt(1) + ", ");
+            System.out.println(resultSet2.getString(2));
         }
 
 
