@@ -68,11 +68,36 @@ public class ExecuteQuery_01 {
          */
 
         boolean query1 = statement.execute(
-                "CREATE TABLE developers (id SERIAL PRIMARY KEY, name VARCHAR(50), salary REAL, prog_lang VARCHAR(20)");
+                "CREATE TABLE IF NOT EXISTS developers (id SERIAL PRIMARY KEY, name VARCHAR(50), salary REAL, prog_lang VARCHAR(20));");
+
+//                statement.execute(
+//                "CREATE TABLE IF NOT EXISTS developers (id SERIAL PRIMARY KEY, name VARCHAR(50), salary REAL, prog_lang VARCHAR(20)");
         System.out.println("query1 = " + query1);
 
+//        we added some data on pgAdmin
 
 
+        System.out.println("===========TASK 3===========");
+//        Get all information about the developers whose salary is the lowest
+        String query2 = "SELECT * FROM developers WHERE salary = (SELECT MIN(salary) FROM developers);";
 
+        ResultSet resultSet3 = statement.executeQuery(query2);
+
+        while (resultSet3.next()) {
+            System.out.println(
+                    resultSet3.getInt("id") + " - " +
+                    resultSet3.getString("name") + " - " +
+                    resultSet3.getString("prog_lang"));
+        }
+
+
+        if (connection != null){
+            statement.close();
+            connection.close();
+            System.out.println("Connection is closed successfully");
+
+        }else {
+            System.out.println("Connection is closed!");
+        }
     }
 }
