@@ -51,7 +51,7 @@ public class ExecuteQuery_01 {
             System.out.println(resultSet1.getInt(3));
         }
 
-        System.out.println("===========TASK 1===========");
+        System.out.println("===========TASK 2===========");
 //          Get phone_code and country_name from the countries table where code is greater than 500
         ResultSet resultSet2 = statement.executeQuery("SELECT phone_code, country_name FROM countries WHERE phone_code > 500;");
 
@@ -59,6 +59,19 @@ public class ExecuteQuery_01 {
             System.out.print(resultSet2.getInt(1) + ", ");
             System.out.println(resultSet2.getString(2));
         }
+
+        System.out.println("===========TASK 3===========");
+//        Create the following table using execute() or executeQuery()
+        /*
+            CREATE TABLE developers (id SERIAL PRIMARY KEY, name VARCHAR(50), salary REAL, prog_lang VARCHAR(20)
+        );
+         */
+
+        boolean query1 = statement.execute(
+                "CREATE TABLE developers (id SERIAL PRIMARY KEY, name VARCHAR(50), salary REAL, prog_lang VARCHAR(20)");
+        System.out.println("query1 = " + query1);
+
+
 
 
     }

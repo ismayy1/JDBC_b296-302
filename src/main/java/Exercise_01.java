@@ -56,7 +56,7 @@ public class Exercise_01 {
 //                salary REAL
 //        )
         boolean query1 = statement.execute(
-                "CREATE TABLE IF NOT EXISTS employees (employee_id INT, employee_name VARCHAR (20), salary REAL)");
+                "CREATE TABLE IF NOT EXISTS employees (employee_id INT, employee_name VARCHAR (20), salary REAL);");
         System.out.println("query1 = " + query1);
 
         /*
