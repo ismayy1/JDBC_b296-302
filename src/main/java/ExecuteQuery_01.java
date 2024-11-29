@@ -1,6 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ExecuteQuery_01 {
     public static void main(String[] args) throws SQLException {
@@ -15,6 +13,17 @@ public class ExecuteQuery_01 {
         }else {
             System.out.println("Connection is not successful!");
         }
+
+//        step 3: create a statement
+        Statement statement = connection.createStatement();
+
+//        step 4: Execute the query
+        ResultSet resultSet1 = statement.executeQuery("SELECT * FROM employees");
+        System.out.println("resultSet1 = " + resultSet1);   // return reference
+
+        System.out.println(resultSet1.next());  // true
+
+
 
 
     }
