@@ -37,7 +37,7 @@ public class Exercise_01 {
         Connection connection = DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/db_user", "db_user", "db_user");
 
-        if (connection != null){
+        if (connection != null) {
             System.out.println("Connection is successful!");
         }else {
             System.out.println("Connection is not successful!");
