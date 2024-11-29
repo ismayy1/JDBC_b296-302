@@ -87,6 +87,7 @@ public class ExecuteQuery_01 {
             System.out.println(
                     resultSet3.getInt("id") + " - " +
                     resultSet3.getString("name") + " - " +
+                    resultSet3.getInt("salary") + " - " +
                     resultSet3.getString("prog_lang"));
         }
 
