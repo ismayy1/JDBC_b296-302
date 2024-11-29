@@ -21,9 +21,33 @@ public class ExecuteQuery_01 {
         ResultSet resultSet1 = statement.executeQuery("SELECT * FROM employees");
         System.out.println("resultSet1 = " + resultSet1);   // return reference
 
-        System.out.println(resultSet1.next());  // true
+        /*
+            System.out.println(resultSet1.next());  // true
 
+            System.out.print(resultSet1.getInt("employee_id") + ", ");
+            System.out.print(resultSet1.getString("employee_name") + ", ");
+            System.out.println(resultSet1.getInt("salary"));
 
+            System.out.println(resultSet1.next());  // true
+
+            System.out.print(resultSet1.getInt("employee_id") + ", ");
+            System.out.print(resultSet1.getString("employee_name") + ", ");
+            System.out.println(resultSet1.getInt("salary"));
+
+            System.out.println(resultSet1.next());  // true
+
+            System.out.print(resultSet1.getInt("employee_id") + ", ");
+            System.out.print(resultSet1.getString("employee_name") + ", ");
+            System.out.println(resultSet1.getInt("salary"));
+
+            System.out.println(resultSet1.next());  // true
+         */
+
+        while (resultSet1.next()) {
+            System.out.print(resultSet1.getInt(1) + ", ");
+            System.out.print(resultSet1.getString(2) + ", ");
+            System.out.println(resultSet1.getInt(3));
+        }
 
 
     }
