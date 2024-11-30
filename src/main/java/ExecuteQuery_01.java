@@ -92,6 +92,7 @@ public class ExecuteQuery_01 {
         }
 
 
+        System.out.println("=================");
         if (connection != null){
             statement.close();
             connection.close();
