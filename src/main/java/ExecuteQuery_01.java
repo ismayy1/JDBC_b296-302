@@ -77,7 +77,7 @@ public class ExecuteQuery_01 {
 //        we added some data on pgAdmin
 
 
-        System.out.println("===========TASK 3===========");
+        System.out.println("===========TASK 4===========");
 //        Get all information about the developers whose salary is the lowest
         String query2 = "SELECT * FROM developers WHERE salary = (SELECT MIN(salary) FROM developers);";
 
@@ -92,11 +92,13 @@ public class ExecuteQuery_01 {
         }
 
 
-        System.out.println("=================");
+
+//        Close the DataBase connection
+        System.out.println("========DataBase Connection is closed=========");
         if (connection != null){
             statement.close();
             connection.close();
-            System.out.println("Connection is closed successfully");
+            System.out.println("Connection is closed successfully!");
 
         }else {
             System.out.println("Connection is closed!");
