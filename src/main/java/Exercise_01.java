@@ -73,7 +73,7 @@ public class Exercise_01 {
 
         // Let's read the data now using SELECT (DQL query)
         // SELECT * FROM employees;
-        boolean query3 = statement.execute("SELECT * FROM employees");
+        boolean query3 = statement.execute("SELECT * FROM employees;");
         System.out.println("query3 = " + query3);
 
 
@@ -82,7 +82,7 @@ public class Exercise_01 {
         if (connection != null){
             statement.close();
             connection.close();
-            System.out.println("Connection is closed successfully");
+            System.out.println("Connection is closed successfully!");
 
         }else {
             System.out.println("Connection is closed!");
