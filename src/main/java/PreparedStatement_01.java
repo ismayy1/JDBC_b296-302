@@ -133,7 +133,7 @@ public class PreparedStatement_01 {
         ResultSet resultSet6 = statement.executeQuery("SELECT * FROM departments");
 
         while (resultSet6.next()) {
-            System.out.println(resultSet5.getInt("id")
+            System.out.println(resultSet5.getInt("dept_id")
                     + " - " + resultSet5.getString("department")
                     + " - " + resultSet5.getInt("pass_grade")
                     + " - " + resultSet5.getString("campus"));
