@@ -25,6 +25,18 @@ public class ExecuteQuery_02 {
         }
 
 
+
+        System.out.println("================ Task 2 ================");
+//        Print department name and grade of department which has the second-highest pass_grade
+        String query2 = "SELECT department, pass_grade FROM departments ORDER BY pass_grade DESC LIMIT 1 OFFSET 1;";
+
+        ResultSet resultSet2 = statement.executeQuery(query2);
+
+        while (resultSet2.next()) {
+            System.out.println(resultSet2.getString("department") + " - " + resultSet2.getInt("pass_grade"));
+        }
+
+
 //        Step 4: Close Connection
         System.out.println("========DataBase Connection is closed=========");
         if (connection != null){
