@@ -60,6 +60,18 @@ public class PreparedStatement_01 {
         }
 
 
+//        Task 3: Upgrade the pass_grade to 490 for Management department
+        preparedStatement1.setInt(1, 490);
+        preparedStatement1.setString(2, "Management");
+
+        int rowsUpdated3 = preparedStatement1.executeUpdate();
+
+        ResultSet resultSet3 = statement.executeQuery("SELECT * FROM departments;");
+
+        while (resultSet1.next()) {
+            System.out.println(resultSet3.getInt("pass_grade") + " - " + resultSet3.getString("department"));
+        }
+
 
         //        Close the DataBase connection
         System.out.println("========DataBase Connection is closed=========");
