@@ -113,6 +113,37 @@ public class PreparedStatement_01 {
         }
 
 
+        System.out.println("==================Task 6==================");
+//        Insert a "Software Development" into departments table
+//        Normal query
+
+//        String query3 = "INSERT INTO departments VALUES (5006, 'Software Development', 499, 'North');";
+        String query3 = "INSERT INTO departments VALUES (?, ?, ?, ?);"; // parametrized query
+
+        PreparedStatement preparedStatement3 = connection.prepareStatement(query3);
+
+        preparedStatement3.setInt(1, 5006);
+        preparedStatement3.setString(2, "Software Development");
+        preparedStatement3.setInt(3, 499);
+        preparedStatement3.setString(4, "North");
+
+        int rowsUpdated6 = preparedStatement3.executeUpdate();
+        System.out.println("rowsUpdated6 = " + rowsUpdated6);
+
+        ResultSet resultSet6 = statement.executeQuery("SELECT * FROM departments");
+
+        while (resultSet6.next()) {
+            System.out.println(resultSet5.getInt("id")
+                    + " - " + resultSet5.getString("department")
+                    + " - " + resultSet5.getInt("pass_grade")
+                    + " - " + resultSet5.getString("campus"));
+        }
+
+
+
+
+
+
 
         //        Close the DataBase connection
         System.out.println("========DataBase Connection is closed=========");
