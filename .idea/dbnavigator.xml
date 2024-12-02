@@ -20,15 +20,15 @@
       <console name="db_user" type="STANDARD" schema="" session="Main"><![CDATA[SELECT * FROM employees;
 --=============================================================================
 
-    CREATE TABLE students(
-            id int,
-            name varchar(50),
-            city varchar(50),
-            grade int,
-            department varchar(20)
-     );    
+CREATE TABLE students(
+    id int,
+    name varchar(50),
+    city varchar(50),
+    grade int,
+    department varchar(20)
+);    
 
-          INSERT INTO students VALUES(100, 'Ahmet Umit', 'İstanbul', 546, 'Comp.Eng.');
+INSERT INTO students VALUES(100, 'Ahmet Umit', 'İstanbul', 546, 'Comp.Eng.');
           INSERT INTO students VALUES(101, 'R.Nuri Tekin', 'Antalya', 486, 'Management');
           INSERT INTO students VALUES(102, 'S.Faik Faruk', 'Bursa', 554, 'Comp.Eng.');
           INSERT INTO students VALUES(103, 'Yasar Kemal', 'İstanbul', 501, 'Mathematics');
@@ -58,7 +58,15 @@ SELECT * FROM students;
               INSERT INTO departments VALUES(5005, 'Literature', 420,'North');
 
 
-SELECT * FROM departments;]]></console>
+SELECT * FROM departments;
+
+
+-- Display the names of the students and their grades if their grades are higher than the pass grade of their department
+
+SELECT name, grade FROM students
+INNER JOIN departments
+ON students.department = departments.department
+WHERE students.grade > departments.pass_grade;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

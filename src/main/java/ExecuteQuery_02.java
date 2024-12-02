@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ExecuteQuery_02 {
     public static void main(String[] args) throws SQLException {
@@ -15,6 +12,18 @@ public class ExecuteQuery_02 {
 
 //        Step 3: Execute query
         System.out.println("================ Task 1 ================");
+//        Display the names of the students and their grades if their grades are higher than the pass grade of their department
+        /*
+        SELECT name, grade FROM students INNER JOIN departments ON students.department = departments.department WHERE students.grade > departments.pass_grade;
+         */
+        String query1= "SELECT name, grade FROM students INNER JOIN departments ON " +
+                "students.department = departments.department WHERE students.grade > departments.pass_grade;";
+        ResultSet resultSet1 = statement.executeQuery(query1);
+
+        while (resultSet1.next()) {
+            System.out.println(resultSet1.getString("name") + " - " + resultSet1.getInt("grade"));
+        }
+
 
 //        Step 4: Close Connection
         System.out.println("========DataBase Connection is closed=========");
