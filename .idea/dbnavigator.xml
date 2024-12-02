@@ -71,7 +71,19 @@ WHERE students.grade > departments.pass_grade;
 
 -- Print department name and grade of department which has the second-highest pass_grade
 
-SELECT department, pass_grade FROM departments ORDER BY pass_grade DESC LIMIT 1 OFFSET 1;]]></console>
+SELECT department, pass_grade FROM departments ORDER BY pass_grade DESC LIMIT 1 OFFSET 1;
+
+-- ==========================================================================
+SELECT * FROM developers;
+
+
+SELECT AVG(salary) FROM developers; -- 5181.25
+
+SELECT name, salary FROM developers WHERE salary < (SELECT AVG(salary) FROM developers);
+
+UPDATE developers
+SET salary = (SELECT AVG(salary) FROM developers)
+where salary < (SELECT AVG(salary) FROM developers);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

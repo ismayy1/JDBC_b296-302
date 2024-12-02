@@ -3,8 +3,6 @@ import java.sql.*;
 public class ExecuteUpdate_01 {
     public static void main(String[] args) throws SQLException {
 
-
-        //        step 2; create connection with DataBase
         Connection connection = DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/db_user", "db_user", "db_user");
 
@@ -14,14 +12,28 @@ public class ExecuteUpdate_01 {
             System.out.println("Connection is not successful!");
         }
 
-//        step 3: create a statement
         Statement statement = connection.createStatement();
 
+//        Update salaries of developers whose salaries are less than average salary with average salary
+        /*
+        UPDATE developers SET salary = (SELECT AVG(salary) FROM developers) where salary < (SELECT AVG(salary) FROM developers);
+         */
+        String query1 = "UPDATE developers SET salary = (SELECT AVG(salary) FROM developers) where salary < (SELECT AVG(salary) FROM developers);";
+
+        int rowsUpdated = statement.executeUpdate(query1);
+        System.out.println("rowsUpdated = " + rowsUpdated);
+
+//        NOTE: executeUpdate() returns the number of rows that get updated
+
+        ResultSet resultSet1 = statement.executeQuery("SELECT * FROM developers;");
+
+        while (resultSet1.next()) {
+            System.out.println(resultSet1.getString("name") + " - " + resultSet1.getInt("salary"));
+        }
 
 
 
 //        12.02.2024
-
 
         System.out.println("=================== Task 3 ===================");
 //        Delete the rows from developers table where prog_lang is 'Ruby'
