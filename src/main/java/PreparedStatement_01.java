@@ -35,8 +35,8 @@ public class PreparedStatement_01 {
 
 
 //        Now use executeUpdate() to update
-        int rowsUpdated = preparedStatement1.executeUpdate();
-        System.out.println("rowsUpdated = " + rowsUpdated);
+        int rowsUpdated1 = preparedStatement1.executeUpdate();
+        System.out.println("rowsUpdated = " + rowsUpdated1);
 
 //        To see the data
         ResultSet resultSet1 = statement.executeQuery("SELECT * FROM departments;");
@@ -45,6 +45,19 @@ public class PreparedStatement_01 {
             System.out.println(resultSet1.getInt("pass_grade") + " - " + resultSet1.getString("department"));
         }
 
+
+        System.out.println("==================Task 2==================");
+//        Task 2: Upgrade the pass_grade to 450 for Literature department
+        preparedStatement1.setInt(1, 450);
+        preparedStatement1.setString(2, "Literature");
+
+        int rowsUpdated2 = preparedStatement1.executeUpdate();
+
+        ResultSet resultSet2 = statement.executeQuery("SELECT * FROM departments;");
+
+        while (resultSet1.next()) {
+            System.out.println(resultSet2.getInt("pass_grade") + " - " + resultSet2.getString("department"));
+        }
 
 
 
