@@ -34,7 +34,16 @@ public class PreparedStatement_01 {
         preparedStatement1.setString(2, "Mathematics");
 
 
-//        Now use executeUpdate()
+//        Now use executeUpdate() to update
+        int rowsUpdated = preparedStatement1.executeUpdate();
+        System.out.println("rowsUpdated = " + rowsUpdated);
+
+//        To see the data
+        ResultSet resultSet1 = statement.executeQuery("SELECT * FROM departments;");
+
+        while (resultSet1.next()) {
+            System.out.println(resultSet1.getInt("pass_grade") + " - " + resultSet1.getString("department"));
+        }
 
 
 
