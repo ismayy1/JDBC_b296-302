@@ -96,7 +96,21 @@ public class PreparedStatement_01 {
                     + " - " + resultSet4.getString("department"));
         }
 
+        System.out.println("==================Task 5==================");
+//        Task 5: Delete students whose department is Psychology
+        preparedStatement2.setString(1, "Psychology");
 
+        int rowsUpdated5 = preparedStatement2.executeUpdate();
+        System.out.println("rowsUpdated5 = " + rowsUpdated5);
+
+        ResultSet resultSet5 = statement.executeQuery("SELECT * FROM students;");
+
+        while (resultSet5.next()) {
+            System.out.println(resultSet5.getInt("id")
+                    + " - " + resultSet5.getString("name")
+                    + " - " + resultSet5.getInt("grade")
+                    + " - " + resultSet5.getString("department"));
+        }
 
 
 
