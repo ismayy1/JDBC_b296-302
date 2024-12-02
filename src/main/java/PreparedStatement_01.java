@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class PreparedStatement_01 {
     public static void main(String[] args) throws SQLException {
@@ -19,6 +16,25 @@ public class PreparedStatement_01 {
 
 //        step 3: create a statement
         Statement statement = connection.createStatement();
+
+        System.out.println("==================Task 1==================");
+//        Task 1: Upgrade the pass_grade to 475 for Mathematics department
+
+//        String query1 = "UPDATE departments SET pass_grade = 475 WHERE department ILIKE 'Mathematics';";
+//        String query2 = "UPDATE departments SET pass_grade = 480 WHERE department ILIKE 'Psychology';";
+//        String query3 = "UPDATE departments SET pass_grade = 490 WHERE department ILIKE 'Management';";
+//        String query4 = "UPDATE departments SET pass_grade = 450 WHERE department ILIKE 'Literature';";
+
+//        dynamic query / parameterised query
+        String query1 = "UPDATE departments SET pass_grade = ? WHERE department ILIKE ? ;";
+
+        PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+
+        preparedStatement1.setInt(1, 475);
+        preparedStatement1.setString(2, "Mathematics");
+
+
+//        Now use executeUpdate()
 
 
 
