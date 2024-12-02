@@ -52,6 +52,7 @@ public class PreparedStatement_01 {
         preparedStatement1.setString(2, "Literature");
 
         int rowsUpdated2 = preparedStatement1.executeUpdate();
+        System.out.println("rowsUpdated2 = " + rowsUpdated2);
 
         ResultSet resultSet2 = statement.executeQuery("SELECT * FROM departments;");
 
@@ -60,17 +61,43 @@ public class PreparedStatement_01 {
         }
 
 
+        System.out.println("==================Task 3==================");
 //        Task 3: Upgrade the pass_grade to 490 for Management department
         preparedStatement1.setInt(1, 490);
         preparedStatement1.setString(2, "Management");
 
         int rowsUpdated3 = preparedStatement1.executeUpdate();
+        System.out.println("rowsUpdated3 = " + rowsUpdated3);
 
         ResultSet resultSet3 = statement.executeQuery("SELECT * FROM departments;");
 
         while (resultSet1.next()) {
             System.out.println(resultSet3.getInt("pass_grade") + " - " + resultSet3.getString("department"));
         }
+
+
+        System.out.println("==================Task 4==================");
+//        Task 4: Delete Students whose department is Mathematics
+//        String query2 = "DELETE FROM departments WHERE department ILIKE 'Mathematics';";
+        String query2 = "DELETE FROM departments WHERE department ILIKE ? ;";    // parameterized query
+
+        PreparedStatement preparedStatement2 = connection.prepareStatement(query2);
+        preparedStatement2.setString(1, "Mathematics");
+
+        int rowsUpdated4 = preparedStatement2.executeUpdate();
+        System.out.println("rowsUpdated4 = " + rowsUpdated4);
+
+        ResultSet resultSet4 = statement.executeQuery("SELECT * FROM students;");
+
+        while (resultSet4.next()) {
+            System.out.println(resultSet4.getInt("id")
+                    + " - " + resultSet4.getString("name")
+                    + " - " + resultSet4.getInt("grade")
+                    + " - " + resultSet4.getString("department"));
+        }
+
+
+
 
 
         //        Close the DataBase connection
