@@ -1,6 +1,9 @@
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class ExecuteUpdate_01 {
+public class PreparedStatement_01 {
     public static void main(String[] args) throws SQLException {
 
 
@@ -17,26 +20,6 @@ public class ExecuteUpdate_01 {
 //        step 3: create a statement
         Statement statement = connection.createStatement();
 
-
-
-
-//        12.02.2024
-
-
-        System.out.println("=================== Task 3 ===================");
-//        Delete the rows from developers table where prog_lang is 'Ruby'
-        String query3 = "DELETE FROM developers WHERE prog_lang ILIKE 'RUBY';";
-
-        int thirdUpdate = statement.executeUpdate(query3);
-        System.out.println("thirdUpdate = " + thirdUpdate);
-
-        ResultSet resultSet3 = statement.executeQuery("SELECT * FROM developers");
-
-        while (resultSet3.next()) {
-            System.out.println(resultSet3.getInt("id") +
-                    " = " + resultSet3.getString("name") +
-                    " - " + resultSet3.getString("prog_lang"));
-        }
 
 
 
